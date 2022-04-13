@@ -1,13 +1,16 @@
 import speech_recognition as sr
 
 r = sr.Recognizer()
-speech = sr.Microphone(device_index=4)
+speech = sr.Microphone(device_index=4
+                       )
 with speech as source:
     print("say something!…")
     audio = r.adjust_for_ambient_noise(source)
+    # audio = r.record(source, duration=5)
     audio = r.listen(source)
 try:
     recog = r.recognize_google(audio, language = 'en-US')
+    # recog = r.recognize_sphinx(audio, language = 'en-US')
     print("You said: " + recog)
 except sr.UnknownValueError:
     print("Google Speech Recognition could not understand audio")
