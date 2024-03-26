@@ -20,18 +20,8 @@
 import subprocess
 
 def execute_unix(text):
-   command = 'espeak -ven+m3 -k5 -s150 --punct="<characters>" "%s" 2>>/dev/null' % text
-   p = subprocess.Popen(command, stdout=subprocess.PIPE, shell=True)
-   (output, err) = p.communicate()
-   return output
+    command = 'espeak -ven+m3 -k5 -s150 --punct="<characters>" "%s" 2>>/dev/null' % text
+    subprocess.call(command, shell=True)
 
-# a = "Ok sir, the light is now turned on"
-
-# create wav file
-# w = 'espeak -w temp.wav "%s" 2>>/dev/null' % a  
-# execute_unix(w)
-
-# tts using espeak
-# c = 'espeak -ven+f3 -k5 -s150 --punct="<characters>" "%s" 2>>/dev/null' % a 
-execute_unix("Ok sir, the light is now turned on")
+execute_unix("Hello world, this is a test script")
 
